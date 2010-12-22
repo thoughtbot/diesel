@@ -1,13 +1,13 @@
 Gem::Specification.new do |s|
   s.name        = %q{diesel}
-  s.version     = '0.1.0'
+  s.version     = '0.1.1'
   s.summary     = %q{Diesel makes your engine go.}
   s.description = %q{Develop your Rails engines like you develop your Rails applications.}
 
   s.files        = Dir['[A-Z]*',
                        'config/**/*',
                        'app/**/*',
-                       'lib/**/*.rb',
+                       'lib/**/*.*',
                        'features/**/*',
                        'lib/generators/**/*',
                        'bin/**/*',
