@@ -19,7 +19,7 @@ module Diesel
         File.join(engine_root,
                   "lib",
                   "generators",
-                  engine_name.underscore,
+                  engine_name,
                   generator_name,
                   'templates')
       end
@@ -29,13 +29,17 @@ module Diesel
       end
 
       def self.engine
-        @_diesel_engine ||= "#{engine_name}::Engine".constantize
+        @_diesel_engine ||= "#{engine_name.camelize}::Engine".constantize
       rescue NameError
         nil
       end
 
       def self.engine_name
-        self.name.split('::').first
+        self.name.split('::').first.underscore
+      end
+
+      def engine_name
+        self.class.engine_name
       end
     end
   end
