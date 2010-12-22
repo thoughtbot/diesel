@@ -3,7 +3,7 @@ require 'rails/generators/active_record/migration'
 
 module Diesel
   module Generators
-    class InstallGenerator < Diesel::Generators::Base
+    class InstallBase < Diesel::Generators::Base
 
       include Rails::Generators::Migration
       extend ActiveRecord::Generators::Migration

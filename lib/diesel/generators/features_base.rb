@@ -2,7 +2,7 @@ require 'diesel/generators/base'
 
 module Diesel
   module Generators
-    class FeaturesGenerator < Diesel::Generators::Base
+    class FeaturesBase < Diesel::Generators::Base
       def generate_features
         features.each do |feature|
           copy_file "features/engine/#{feature}", "features/#{engine_name}/#{feature}"

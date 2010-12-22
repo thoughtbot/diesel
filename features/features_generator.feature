@@ -42,11 +42,11 @@ Feature: reusable features generator
     """
     When I write to "lib/generators/testengine/features/features_generator.rb" with:
     """
-    require 'diesel/generators/features_generator'
+    require 'diesel/generators/features_base'
 
     module Testengine
       module Generators
-        class FeaturesGenerator < Diesel::Generators::FeaturesGenerator
+        class FeaturesGenerator < Diesel::Generators::FeaturesBase
         end
       end
     end

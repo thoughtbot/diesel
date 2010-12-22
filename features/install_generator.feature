@@ -55,11 +55,11 @@ Feature: reusable install generator
     """
     When I write to "lib/generators/testengine/install/install_generator.rb" with:
     """
-    require 'diesel/generators/install_generator'
+    require 'diesel/generators/install_base'
 
     module Testengine
       module Generators
-        class InstallGenerator < Diesel::Generators::InstallGenerator
+        class InstallGenerator < Diesel::Generators::InstallBase
           def copy_view
             copy_file "index.html.erb", "app/views/examples/index.html.erb"
           end
