@@ -17,6 +17,7 @@ module Diesel
       config.action_controller.allow_forgery_protection = false
       config.action_mailer.delivery_method = :test
       config.active_support.deprecation = :stderr
+      config.secret_token = "DIESEL" * 5 # so diesel
     end
   end
 end
