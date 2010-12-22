@@ -4,7 +4,6 @@ require 'rails/generators/active_record/migration'
 module Diesel
   module Generators
     class InstallGenerator < Diesel::Generators::Base
-      #TODO: desc
 
       include Rails::Generators::Migration
       extend ActiveRecord::Generators::Migration
@@ -13,6 +12,11 @@ module Diesel
         migrations.each do |migration|
           migration_template migration
         end
+      end
+
+      def self.inherited(generator)
+        super
+        generator.desc %{Generate configuration, migration, and other essential files.}
       end
 
       private

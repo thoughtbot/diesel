@@ -1,7 +1,7 @@
 @disable-bundler @puts @announce
 Feature: reusable install generator
 
-  Scenario: install a diesel engine
+  Background:
     Given a directory named "testengine"
     When I cd to "testengine"
     And I write to "testengine.gemspec" with:
@@ -39,12 +39,6 @@ Feature: reusable install generator
       end
     end
     """
-    When I write to "app/views/examples/index.html.erb" with:
-    """
-    <% @examples.each do |example| -%>
-      <p><%= example.title %></p>
-    <% end -%>
-    """
     When I write to "config/routes.rb" with:
     """
     Rails.application.routes.draw do
@@ -66,9 +60,18 @@ Feature: reusable install generator
     module Testengine
       module Generators
         class InstallGenerator < Diesel::Generators::InstallGenerator
+          def copy_view
+            copy_file "index.html.erb", "app/views/examples/index.html.erb"
+          end
         end
       end
     end
+    """
+    When I write to "lib/generators/testengine/install/templates/index.html.erb" with:
+    """
+    <% @examples.each do |example| -%>
+      <p><%= example.title %></p>
+    <% end -%>
     """
     When I cd to ".."
     And I successfully run "rails new testapp"
@@ -85,7 +88,9 @@ Feature: reusable install generator
     And I successfully run "rails generate cucumber:install --trace"
     And I successfully run "rails generate testengine:install --trace"
     And I successfully run "rake db:migrate db:schema:dump db:test:prepare --trace"
-    And I write to "features/examples.feature" with:
+
+  Scenario: test a generated app with a diesel engine
+    When I write to "features/examples.feature" with:
     """
     Feature: view examples
       Scenario: go to the examples page
@@ -96,5 +101,12 @@ Feature: reusable install generator
     Then it should pass with:
     """
     1 scenario (1 passed)
+    """
+
+  Scenario: view generator descriptions from an app with a diesel engine
+    When I successfully run "rails generate testengine:install -h"
+    Then the output should contain:
+    """
+    Generate configuration, migration, and other essential files.
     """
 
