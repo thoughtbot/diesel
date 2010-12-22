@@ -1,4 +1,4 @@
-@disable-bundler @puts @announce
+@disable-bundler
 Feature: reusable features generator
 
   Background:

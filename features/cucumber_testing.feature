@@ -1,4 +1,4 @@
-@disable-bundler @puts @announce
+@disable-bundler
 Feature: test a diesel engine using cucumber
 
   Scenario: create a disel engine and test using cucumber

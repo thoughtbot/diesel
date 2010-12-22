@@ -1,4 +1,4 @@
-@disable-bundler @puts @announce
+@disable-bundler
 Feature: integration testing
 
   Scenario: test integration of a diesel engine with a generated application

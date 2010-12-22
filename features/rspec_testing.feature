@@ -1,4 +1,4 @@
-@disable-bundler @puts @announce
+@disable-bundler
 Feature: test a diesel engine using rspec
 
   Scenario: create a disel engine and test using rspec
