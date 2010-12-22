@@ -38,8 +38,17 @@ module Diesel
         self.name.split('::').first.underscore
       end
 
+      private
+
       def engine_name
         self.class.engine_name
+      end
+
+      def files_within_root(prefix, glob)
+        root = "#{self.class.source_root}/#{prefix}"
+        Dir["#{root}/#{glob}"].sort.map do |full_path|
+          full_path.sub(root, '.').gsub('/./', '/')
+        end
       end
     end
   end

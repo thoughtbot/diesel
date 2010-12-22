@@ -22,9 +22,7 @@ module Diesel
       private
 
       def migrations
-        Dir["#{self.class.source_root}/db/migrate/*.rb"].sort.map do |full_migration_path|
-          full_migration_path.sub(self.class.source_root, '.').gsub('/./', '/')
-        end
+        files_within_root(".", "db/migrate/*.rb")
       end
     end
   end
