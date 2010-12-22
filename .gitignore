@@ -1,0 +1,6 @@
+*.swp
+*.swo
+*~
+tmp
+*.sqlite3
+.bundle
