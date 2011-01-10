@@ -21,6 +21,17 @@ module Diesel
       config.action_mailer.delivery_method = :test
       config.active_support.deprecation = :stderr
       config.secret_token = "DIESEL" * 5 # so diesel
+
+      protected
+
+      def require_environment!
+        initialize!
+      end
+
+      def initialize!
+        FileUtils.mkdir_p(Rails.root.join("db").to_s)
+        super
+      end
     end
   end
 end
