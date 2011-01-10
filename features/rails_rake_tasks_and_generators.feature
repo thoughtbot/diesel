@@ -11,13 +11,15 @@ Feature: use Rails rake tasks when developing a diesel application
     gem "sqlite3-ruby"
     """
     When I add this library as a dependency
+    And I run "bundle install --local"
     And I write to "Rakefile" with:
     """
     require 'rubygems'
     require 'bundler/setup'
     require 'diesel/tasks'
     """
-    When I write to "spec/models/post_spec.rb" with:
+    When I successfully run "bundle exec diesel generate model post title:string"
+    And I write to "spec/models/post_spec.rb" with:
     """
     ENV["RAILS_ENV"] ||= 'test'
     require "diesel/testing"
@@ -34,22 +36,8 @@ Feature: use Rails rake tasks when developing a diesel application
     class Post < ActiveRecord::Base
     end
     """
-    When I write to "db/migrate/001_create_posts.rb" with:
-    """
-    class CreatePosts < ActiveRecord::Migration
-      def self.up
-        create_table :posts do |table|
-          table.string :title
-        end
-      end
-
-      def self.down
-        drop_table :posts
-      end
-    end
-    """
     When I successfully run "rake db:create db:migrate db:schema:dump db:test:prepare"
-    When I run "bundle exec rspec --format documentation spec"
+    And I run "bundle exec rspec --format documentation spec"
     Then it should pass with:
     """
     0 failures

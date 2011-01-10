@@ -22,8 +22,6 @@ module Diesel
       config.active_support.deprecation = :stderr
       config.secret_token = "DIESEL" * 5 # so diesel
 
-      protected
-
       def require_environment!
         initialize!
       end
