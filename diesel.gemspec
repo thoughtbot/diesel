@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = %q{diesel}
-  s.version     = '0.1.2'
+  s.version     = '0.1.3'
   s.summary     = %q{Diesel makes your engine go.}
   s.description = %q{Develop your Rails engines like you develop your Rails applications.}
 
