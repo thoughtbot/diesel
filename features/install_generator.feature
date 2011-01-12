@@ -14,7 +14,7 @@ Feature: reusable install generator
       s.add_dependency 'diesel'
     end
     """
-    When I write to "db/migrate/create_examples.rb" with:
+    When I write to "db/migrate/001_create_examples.rb" with:
     """
     class CreateExamples < ActiveRecord::Migration
       def self.up

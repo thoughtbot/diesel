@@ -10,7 +10,7 @@ module Diesel
 
       def generate_migrations
         migrations.each do |migration|
-          migration_template migration
+          migration_template migration, migration.sub(%r{(db/migrate/)(?:\d+_)?}, '\1')
         end
       end
 
