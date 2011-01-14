@@ -1,7 +1,7 @@
 @disable-bundler
 Feature: test a diesel engine using cucumber
 
-  Scenario: create a disel engine and test using cucumber
+  Background:
     Given a directory named "testengine"
     When I cd to "testengine"
     And I write to "Gemfile" with:
@@ -14,14 +14,7 @@ Feature: test a diesel engine using cucumber
     gem "formtastic", "~> 1.2.3"
     """
     When I add this library as a dependency
-    When I write to "features/hello.feature" with:
-    """
-    Feature: say hello
-      Scenario: go to the hello page
-        When I go to /hello
-        Then I should see "hello!"
-    """
-    When I write to "features/step_definitions/hello_steps.rb" with:
+    And I write to "features/step_definitions/hello_steps.rb" with:
     """
     When /^I go to (\/.+)$/ do |path|
       visit path
@@ -39,6 +32,21 @@ Feature: test a diesel engine using cucumber
     require 'capybara/cucumber'
     require 'capybara/session'
     """
+    When I write to "config/routes.rb" with:
+    """
+    Rails.application.routes.draw do
+      match "/hello", :to => 'example#hello'
+    end
+    """
+
+  Scenario: create a disel engine and test using cucumber
+    When I write to "features/hello.feature" with:
+    """
+    Feature: say hello
+      Scenario: go to the hello page
+        When I go to /hello
+        Then I should see "hello!"
+    """
     When I write to "app/controllers/example_controller.rb" with:
     """
     class ExampleController < ActionController::Base
@@ -53,10 +61,25 @@ Feature: test a diesel engine using cucumber
     hello!
     <% end -%>
     """
-    When I write to "config/routes.rb" with:
+    When I run "bundle exec cucumber features/hello.feature"
+    Then it should pass with:
     """
-    Rails.application.routes.draw do
-      match "/hello", :to => 'example#hello'
+    1 scenario (1 passed)
+    """
+
+  Scenario: create a disel engine that redirects to the root url
+    When I write to "features/hello.feature" with:
+    """
+    Feature: say hello
+      Scenario: redirect from the hello page
+        Then I go to /hello
+    """
+    When I write to "app/controllers/example_controller.rb" with:
+    """
+    class ExampleController < ActionController::Base
+      def hello
+        redirect_to root_url
+      end
     end
     """
     When I run "bundle exec cucumber features/hello.feature"
@@ -64,4 +87,3 @@ Feature: test a diesel engine using cucumber
     """
     1 scenario (1 passed)
     """
-
