@@ -11,6 +11,7 @@ Feature: test a diesel engine using cucumber
     gem "rails", "~> 3.0.3"
     gem "rspec", "~> 1.3.0"
     gem "sqlite3-ruby"
+    gem "formtastic", "~> 1.2.3"
     """
     When I add this library as a dependency
     When I write to "features/hello.feature" with:
@@ -48,7 +49,9 @@ Feature: test a diesel engine using cucumber
     """
     When I write to "app/views/example/hello.html.erb" with:
     """
+    <%= semantic_form_for :nothing do |form| -%>
     hello!
+    <% end -%>
     """
     When I write to "config/routes.rb" with:
     """
