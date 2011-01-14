@@ -1,7 +1,7 @@
 @disable-bundler
 Feature: test a diesel engine using rspec
 
-  Scenario: create a disel engine and test using rspec
+  Scenario: create a diesel engine and test using rspec
     Given a directory named "testengine"
     When I cd to "testengine"
     And I write to "Gemfile" with:

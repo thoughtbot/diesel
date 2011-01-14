@@ -1,7 +1,7 @@
 @disable-bundler
 Feature: use Rails rake tasks when developing a diesel application
 
-  Scenario: create a disel engine and use Rails rake tasks
+  Scenario: create a diesel engine and use Rails rake tasks
     Given a directory named "testengine"
     When I cd to "testengine"
     And I write to "Gemfile" with:

@@ -39,7 +39,7 @@ Feature: test a diesel engine using cucumber
     end
     """
 
-  Scenario: create a disel engine and test using cucumber
+  Scenario: create a diesel engine and test using cucumber
     When I write to "features/hello.feature" with:
     """
     Feature: say hello
@@ -67,7 +67,7 @@ Feature: test a diesel engine using cucumber
     1 scenario (1 passed)
     """
 
-  Scenario: create a disel engine that redirects to the root url
+  Scenario: create a diesel engine that redirects to the root url
     When I write to "features/hello.feature" with:
     """
     Feature: say hello
