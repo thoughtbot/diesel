@@ -110,3 +110,7 @@ Feature: reusable install generator
     Generate configuration, migration, and other essential files.
     """
 
+  Scenario: run the install generator twice
+    When I successfully run "rails generate testengine:install --trace"
+    Then the output should not contain "Another migration is already named"
+

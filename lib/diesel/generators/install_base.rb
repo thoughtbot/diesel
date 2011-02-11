@@ -9,8 +9,11 @@ module Diesel
       extend ActiveRecord::Generators::Migration
 
       def generate_migrations
-        migrations.each do |migration|
-          migration_template migration, migration.sub(%r{(db/migrate/)(?:\d+_)?}, '\1')
+        migrations.each do |source_file|
+          name = migration_name(source_file)
+          unless migration_exists?(name)
+            migration_template source_file, "db/migrate/#{name}"
+          end
         end
       end
 
@@ -23,6 +26,20 @@ module Diesel
 
       def migrations
         files_within_root(".", "db/migrate/*.rb")
+      end
+
+      def migration_exists?(name)
+        existing_migrations.include?(name)
+      end
+
+      def existing_migrations
+        @existing_migrations ||= Dir.glob("db/migrate/*.rb").map do |file|
+          migration_name(file)
+        end
+      end
+
+      def migration_name(file)
+        file.sub(%r{^.*(db/migrate/)(?:\d+_)?}, '')
       end
     end
   end
