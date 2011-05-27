@@ -18,8 +18,6 @@ Gem::Specification.new do |s|
   s.default_executable = 'diesel'
   s.executables        = ['diesel']
 
-  s.has_rdoc = false
-
   s.authors = ["thoughtbot, inc.", "Joe Ferris"]
   s.email   = %q{support@thoughtbot.com}
   s.homepage = "http://github.com/thoughtbot/diesel"
