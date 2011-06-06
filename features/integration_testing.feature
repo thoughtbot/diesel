@@ -125,6 +125,7 @@ Feature: integration testing
     When I write to "features/support/env.rb" with:
     """
     require "diesel/testing/integration"
+    Before { @aruba_timeout_seconds = 30 }
     """
     When I write to "features/step_definitions/dependency_steps.rb" with:
     """
