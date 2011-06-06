@@ -68,9 +68,9 @@ Feature: reusable features generator
     And I cd to "testapp"
     And I append to "Gemfile" with:
     """
-    gem "cucumber-rails", "~> 0.3.2"
-    gem "capybara", "~> 0.4.0"
-    gem "rspec", "~> 1.3.0"
+    gem "cucumber-rails"
+    gem "capybara"
+    gem "rspec"
 
     """
     When I add the "testengine" as a diesel engine

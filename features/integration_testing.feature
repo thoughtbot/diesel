@@ -17,7 +17,7 @@ Feature: integration testing
     """
     gem "cucumber"
     gem "aruba"
-    gem "rspec", "~> 1.3.0"
+    gem "rspec"
     """
     When I add this library as a dependency
     And I write to "db/migrate/create_examples.rb" with:
