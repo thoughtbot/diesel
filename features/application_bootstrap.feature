@@ -22,6 +22,8 @@ Feature: test a diesel engine using the bootstrapped application
       match "/hello", :to => 'example#hello'
     end
     """
+    When I reset Bundler environment variable
+    And I run `bundle install --local`
 
   Scenario: use root_url
     When I write to "spec/controllers/example_controller_spec.rb" with:
