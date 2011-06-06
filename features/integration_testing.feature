@@ -105,20 +105,20 @@ Feature: integration testing
     @puts @announce
     Feature: integrate with application
       Scenario: generate a Rails app, run the generates, and run the tests
-        When I successfully run "rails new testapp"
+        When I successfully run `rails new testapp`
         And I cd to "testapp"
         And I add the "cucumber-rails" gem
         And I add the "capybara" gem
         And I add the "rspec-rails" gem
         And I add the "testengine" gem from this project
         And I add the "diesel" gem from the diesel project
-        And I successfully run "rails generate cucumber:install"
-        And I successfully run "rails generate testengine:install"
-        And I successfully run "rails generate testengine:features"
-        And I successfully run "rake db:migrate --trace"
-        And I successfully run "rake --trace"
         And I reset the Bundler environment variable
         And I run `bundle install --local`
+        And I successfully run `rails generate cucumber:install`
+        And I successfully run `rails generate testengine:install`
+        And I successfully run `rails generate testengine:features`
+        And I successfully run `rake db:migrate --trace`
+        And I successfully run `rake --trace`
         Then the output should contain "1 scenario (1 passed)"
         And the output should not contain "Could not find generator"
     """
@@ -140,9 +140,9 @@ Feature: integration testing
       end
     end
     """
-    And I run "bundle exec cucumber features/integration.feature"
     When I reset Bundler environment variable
     When I run `bundle install --local`
+    And I run `bundle exec cucumber features/integration.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)

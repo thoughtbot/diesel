@@ -64,7 +64,7 @@ Feature: reusable features generator
     end
     """
     When I cd to ".."
-    And I successfully run "rails new testapp"
+    And I successfully run `rails new testapp`
     And I cd to "testapp"
     And I append to "Gemfile" with:
     """
@@ -74,20 +74,20 @@ Feature: reusable features generator
 
     """
     When I add the "testengine" as a diesel engine
-    And I successfully run "rails generate cucumber:install --trace"
-    And I successfully run "rails generate testengine:features --trace"
     And I reset Bundler environment variable
     And I run `bundle install --local`
+    And I successfully run `rails generate cucumber:install --trace`
+    And I successfully run `rails generate testengine:features --trace`
 
   Scenario: copy features into an app from a diesel engine
-    When I run "bundle exec cucumber -r features features/testengine/examples.feature"
+    When I run `bundle exec cucumber -r features features/testengine/examples.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)
     """
 
   Scenario: view generator descriptions from an app with a diesel engine
-    When I successfully run "rails generate testengine:features -h"
+    When I successfully run `rails generate testengine:features -h`
     Then the output should contain:
     """
     Copy cucumber feature files for the engine into your application.

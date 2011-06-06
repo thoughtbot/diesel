@@ -62,7 +62,7 @@ Feature: test a diesel engine using cucumber
     hello!
     <% end -%>
     """
-    When I run "bundle exec cucumber features/hello.feature"
+    When I run `bundle exec cucumber features/hello.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)
@@ -83,7 +83,7 @@ Feature: test a diesel engine using cucumber
       end
     end
     """
-    When I run "bundle exec cucumber features/hello.feature"
+    When I run `bundle exec cucumber features/hello.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)
