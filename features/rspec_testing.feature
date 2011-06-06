@@ -5,8 +5,8 @@ Feature: test a diesel engine using rspec
     When I cd to "testengine"
     And I write to "Gemfile" with:
     """
-    gem "rspec-rails", "~> 2.3.0"
-    gem "rails", "~> 3.0.3"
+    gem "rspec-rails"
+    gem "rails"
     gem "sqlite3-ruby"
     """
     When I add this library as a dependency
@@ -42,7 +42,7 @@ Feature: test a diesel engine using rspec
       match "/hello", :to => 'example#hello'
     end
     """
-    When I run "bundle exec rspec --format documentation spec"
+    When I run `bundle exec rspec --format documentation spec`
     Then it should pass with:
     """
     0 failures
