@@ -3,9 +3,15 @@ require 'bundler/setup'
 require 'rake'
 require 'rake/gempackagetask'
 require 'cucumber/rake/task'
+require 'appraisal'
 
-desc 'Default: run all tests'
-task :default => [:cucumber]
+desc 'Default: run cucumber features'
+task :default => [:all]
+
+desc 'Test the plugin under all supported Rails versions.'
+task :all => ["appraisal:cleanup", "appraisal:install"] do |t|
+  exec('rake appraisal cucumber')
+end
 
 Cucumber::Rake::Task.new(:cucumber) do |t|
   t.fork = true
