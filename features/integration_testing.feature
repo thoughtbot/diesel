@@ -15,6 +15,7 @@ Feature: integration testing
     """
     When I write to "Gemfile" with:
     """
+    gem "rails"
     gem "cucumber"
     gem "aruba"
     gem "rspec"
