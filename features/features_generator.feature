@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: reusable features generator
 
   Background:
@@ -75,9 +74,10 @@ Feature: reusable features generator
 
     """
     When I add the "testengine" as a diesel engine
-    And I run "bundle install --local"
     And I successfully run "rails generate cucumber:install --trace"
     And I successfully run "rails generate testengine:features --trace"
+    And I reset Bundler environment variable
+    And I run `bundle install --local`
 
   Scenario: copy features into an app from a diesel engine
     When I run "bundle exec cucumber -r features features/testengine/examples.feature"

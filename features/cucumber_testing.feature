@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: test a diesel engine using cucumber
 
   Background:
@@ -38,6 +37,8 @@ Feature: test a diesel engine using cucumber
       match "/hello", :to => 'example#hello'
     end
     """
+    When I reset Bundler environment variable
+    And I run `bundle install --local`
 
   Scenario: create a diesel engine and test using cucumber
     When I write to "features/hello.feature" with:

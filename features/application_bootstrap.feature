@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: test a diesel engine using the bootstrapped application
 
   Background:

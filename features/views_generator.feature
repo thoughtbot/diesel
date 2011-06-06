@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: reusable views generator
 
   Background:

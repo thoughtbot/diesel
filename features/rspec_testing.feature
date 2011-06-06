@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: test a diesel engine using rspec
 
   Scenario: create a diesel engine and test using rspec

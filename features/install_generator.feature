@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: reusable install generator
 
   Background:
@@ -84,10 +83,11 @@ Feature: reusable install generator
 
     """
     When I add the "testengine" as a diesel engine
-    And I run "bundle install --local"
     And I successfully run "rails generate cucumber:install --trace"
     And I successfully run "rails generate testengine:install --trace"
     And I successfully run "rake db:migrate db:schema:dump db:test:prepare --trace"
+    And I reset Bundler environment variable
+    And I run `bundle install --local`
 
   Scenario: test a generated app with a diesel engine
     When I write to "features/examples.feature" with:

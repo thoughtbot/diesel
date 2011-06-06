@@ -1,4 +1,3 @@
-@disable-bundler
 Feature: use Rails rake tasks when developing a diesel application
 
   Scenario: create a diesel engine and use Rails rake tasks
