@@ -26,7 +26,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency('railties')
 
-  s.add_development_dependency('cucumber')
+  s.add_development_dependency('cucumber-rails', '~> 0.5.1')
   s.add_development_dependency('appraisal')
   s.add_development_dependency('rspec-rails', '~> 2.6.1')
   s.add_development_dependency('thin')
