@@ -80,6 +80,7 @@ Feature: reusable install generator
     gem "cucumber-rails"
     gem "capybara"
     gem "rspec"
+    gem "database_cleaner"
 
     """
     When I add the "testengine" as a diesel engine

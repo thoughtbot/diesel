@@ -111,6 +111,7 @@ Feature: integration testing
         And I add the "cucumber-rails" gem
         And I add the "capybara" gem
         And I add the "rspec-rails" gem
+        And I add the "database_cleaner" gem
         And I add the "testengine" gem from this project
         And I add the "diesel" gem from the diesel project
         And I reset the Bundler environment variable
