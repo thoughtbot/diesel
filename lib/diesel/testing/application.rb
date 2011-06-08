@@ -28,7 +28,7 @@ module Diesel
 
       def initialize!
         FileUtils.mkdir_p(Rails.root.join("db").to_s)
-        super
+        super unless @initialized
       end
     end
   end
