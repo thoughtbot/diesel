@@ -7,11 +7,19 @@ module Diesel
     class Application < Rails::Application
       config.encoding = "utf-8"
       config.action_mailer.default_url_options = { :host => 'localhost' }
-      config.paths.config.database = "#{APP_ROOT}/config/database.yml"
-      config.paths.config.routes << "#{APP_ROOT}/config/routes.rb"
-      config.paths.app.controllers << "#{APP_ROOT}/app/controllers"
-      config.paths.app.views << "#{APP_ROOT}/app/views"
-      config.paths.log = "tmp/log"
+      if Rails::VERSION::MAJOR >= 3 && Rails::VERSION::MINOR >= 1
+        config.paths['config/database'] = "#{APP_ROOT}/config/database.yml"
+        config.paths['config/routes'] << "#{APP_ROOT}/config/routes.rb"
+        config.paths['app/controllers'] << "#{APP_ROOT}/app/controllers"
+        config.paths['app/views'] << "#{APP_ROOT}/app/views"
+        config.paths['log'] = "tmp/log/development.log"
+      else
+        config.paths.config.database = "#{APP_ROOT}/config/database.yml"
+        config.paths.config.routes << "#{APP_ROOT}/config/routes.rb"
+        config.paths.app.controllers << "#{APP_ROOT}/app/controllers"
+        config.paths.app.views << "#{APP_ROOT}/app/views"
+        config.paths.log = "tmp/log"
+      end
       config.cache_classes = true
       config.whiny_nils = true
       config.consider_all_requests_local = true
