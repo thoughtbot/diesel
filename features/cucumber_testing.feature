@@ -9,7 +9,7 @@ Feature: test a diesel engine using cucumber
     gem "cucumber-rails", "~> 0.3.2"
     gem "capybara", "~> 0.4.0"
     gem "rails", "~> 3.0.3"
-    gem "rspec", "~> 1.3.0"
+    gem "rspec", "~> 2.6.0"
     gem "sqlite3-ruby"
     gem "formtastic", "~> 1.2.3"
     """
@@ -61,7 +61,7 @@ Feature: test a diesel engine using cucumber
     hello!
     <% end -%>
     """
-    When I run "bundle exec cucumber features/hello.feature"
+    When I run `bundle exec cucumber features/hello.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)
@@ -82,7 +82,7 @@ Feature: test a diesel engine using cucumber
       end
     end
     """
-    When I run "bundle exec cucumber features/hello.feature"
+    When I run `bundle exec cucumber features/hello.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)

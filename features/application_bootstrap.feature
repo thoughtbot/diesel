@@ -43,7 +43,7 @@ Feature: test a diesel engine using the bootstrapped application
       end
     end
     """
-    When I run "bundle exec rspec --format documentation spec"
+    When I run `bundle exec rspec --format documentation spec`
     Then it should pass with:
     """
     0 failures
@@ -69,7 +69,7 @@ Feature: test a diesel engine using the bootstrapped application
       end
     end
     """
-    When I run "bundle exec rspec --format documentation spec"
+    When I run `bundle exec rspec --format documentation spec`
     Then it should pass with:
     """
     0 failures
@@ -99,7 +99,7 @@ Feature: test a diesel engine using the bootstrapped application
     """
     hello
     """
-    When I run "bundle exec rspec --format documentation spec"
+    When I run `bundle exec rspec --format documentation spec`
     Then it should pass with:
     """
     0 failures

@@ -74,20 +74,20 @@ Feature: reusable install generator
     <% end -%>
     """
     When I cd to ".."
-    And I successfully run "rails new testapp"
+    And I successfully run `bundle exec rails new testapp`
     And I cd to "testapp"
     And I append to "Gemfile" with:
     """
     gem "cucumber-rails", "~> 0.3.2"
     gem "capybara", "~> 0.4.0"
-    gem "rspec", "~> 1.3.0"
+    gem "rspec", "~> 2.6.0"
 
     """
     When I add the "testengine" as a diesel engine
-    And I run "bundle install --local"
-    And I successfully run "rails generate cucumber:install --trace"
-    And I successfully run "rails generate testengine:install --trace"
-    And I successfully run "rake db:migrate db:schema:dump db:test:prepare --trace"
+    And I run `bundle install --local`
+    And I successfully run `bundle exec rails generate cucumber:install --trace`
+    And I successfully run `bundle exec rails generate testengine:install --trace`
+    And I successfully run `bundle exec rake db:migrate db:schema:dump db:test:prepare --trace`
 
   Scenario: test a generated app with a diesel engine
     When I write to "features/examples.feature" with:
@@ -97,20 +97,20 @@ Feature: reusable install generator
         When I go to the examples page
         Then I should see "Hello there"
     """
-    When I run "bundle exec cucumber features/examples.feature"
+    When I run `bundle exec cucumber features/examples.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)
     """
 
   Scenario: view generator descriptions from an app with a diesel engine
-    When I successfully run "rails generate testengine:install -h"
+    When I successfully run `bundle exec rails generate testengine:install -h`
     Then the output should contain:
     """
     Generate configuration, migration, and other essential files.
     """
 
   Scenario: run the install generator twice
-    When I successfully run "rails generate testengine:install --trace"
+    When I successfully run `bundle exec rails generate testengine:install --trace`
     Then the output should not contain "Another migration is already named"
 

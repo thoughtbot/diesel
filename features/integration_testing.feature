@@ -1,6 +1,6 @@
 @disable-bundler
 Feature: integration testing
-
+  @slow
   Scenario: test integration of a diesel engine with a generated application
     Given a directory named "testengine"
     When I cd to "testengine"
@@ -18,7 +18,8 @@ Feature: integration testing
     """
     gem "cucumber"
     gem "aruba"
-    gem "rspec", "~> 1.3.0"
+    gem "rspec", "~> 2.6.0"
+    gem "rails", "3.0.7"
     """
     When I add this library as a dependency
     And I write to "db/migrate/create_examples.rb" with:
@@ -106,25 +107,28 @@ Feature: integration testing
     @disable-bundler @puts @announce
     Feature: integrate with application
       Scenario: generate a Rails app, run the generates, and run the tests
-        When I successfully run "rails new testapp"
+        When I successfully run `bundle exec rails new testapp`
         And I cd to "testapp"
         And I add the "cucumber-rails" gem
         And I add the "capybara" gem
         And I add the "rspec-rails" gem
         And I add the "testengine" gem from this project
         And I add the "diesel" gem from the diesel project
-        And I run "bundle install --local"
-        And I successfully run "rails generate cucumber:install"
-        And I successfully run "rails generate testengine:install"
-        And I successfully run "rails generate testengine:features"
-        And I successfully run "rake db:migrate --trace"
-        And I successfully run "rake --trace"
+        And I run `bundle install --local`
+        And I successfully run `bundle exec rails generate cucumber:install`
+        And I successfully run `bundle exec rails generate testengine:install`
+        And I successfully run `bundle exec rails generate testengine:features`
+        And I successfully run `bundle exec rake db:migrate --trace`
+        And I successfully run `bundle exec rake --trace`
         Then the output should contain "1 scenario (1 passed)"
         And the output should not contain "Could not find generator"
     """
     When I write to "features/support/env.rb" with:
     """
     require "diesel/testing/integration"
+    Before do
+      @aruba_timeout_seconds = 120
+    end
     """
     When I write to "features/step_definitions/dependency_steps.rb" with:
     """
@@ -133,8 +137,8 @@ Feature: integration testing
       append_to_file('Gemfile', %{\ngem "#{gem_name}", :path => "../../../../../.."\n})
     end
     """
-    When I run "bundle install --local"
-    And I run "bundle exec cucumber features/integration.feature"
+    When I run `bundle install --local`
+    And I successfully run `bundle exec cucumber features/integration.feature`
     Then it should pass with:
     """
     1 scenario (1 passed)

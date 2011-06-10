@@ -43,7 +43,7 @@ Feature: test a diesel engine using rspec
       match "/hello", :to => 'example#hello'
     end
     """
-    When I run "bundle exec rspec --format documentation spec"
+    When I run `bundle exec rspec --format documentation spec`
     Then it should pass with:
     """
     0 failures
