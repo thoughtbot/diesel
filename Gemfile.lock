@@ -141,11 +141,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  appraisal
-  cucumber-rails (~> 0.5.1)
-  database_cleaner
-  diesel!
-  rails (>= 3.0)
-  rspec-rails (~> 2.6.1)
+  aruba
+  cucumber
+  rails (= 3.0.7)
+  rake
+  rspec-rails
   sqlite3-ruby
   thin

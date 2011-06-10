@@ -35,7 +35,7 @@ Feature: use Rails rake tasks when developing a diesel application
     class Post < ActiveRecord::Base
     end
     """
-    When I successfully run `rake db:create db:migrate db:schema:dump db:test:prepare`
+    When I successfully run `bundle exec rake db:create db:migrate db:schema:dump db:test:prepare`
     And I run `bundle exec rspec --format documentation spec`
     Then it should pass with:
     """

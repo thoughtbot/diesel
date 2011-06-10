@@ -37,18 +37,18 @@ Feature: reusable views generator
     end
     """
     When I cd to ".."
-    And I successfully run `rails new testapp`
+    And I successfully run `bundle exec rails new testapp`
     And I cd to "testapp"
     And I add the "testengine" as a diesel engine
     And I reset Bundler environment variable
     And I run `bundle install --local`
 
   Scenario: copy views into an app from a diesel engine
-    When I successfully run `rails generate testengine:views --trace`
+    When I successfully run `bundle exec rails generate testengine:views --trace`
     Then the file "app/views/examples/index.html.erb" should contain "Hello there"
 
   Scenario: view generator descriptions from an app with a diesel engine
-    When I successfully run `rails generate testengine:views -h`
+    When I successfully run `bundle exec rails generate testengine:views -h`
     Then the output should contain:
     """
     Copy view files for the engine into your application.
