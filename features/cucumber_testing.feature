@@ -6,7 +6,6 @@ Feature: test a diesel engine using cucumber
     And I write to "Gemfile" with:
     """
     gem "cucumber-rails"
-    gem "capybara"
     gem "rails"
     gem "rspec"
     gem "sqlite3-ruby"
