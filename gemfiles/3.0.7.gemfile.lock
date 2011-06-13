@@ -1,5 +1,5 @@
 PATH
-  remote: /Users/sikachu/Projects/diesel
+  remote: /home/mike/lib/diesel
   specs:
     diesel (0.1.4)
       railties

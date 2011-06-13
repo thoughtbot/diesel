@@ -1,3 +1,4 @@
+@slow
 Feature: reusable install generator
 
   Background:

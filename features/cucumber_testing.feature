@@ -39,6 +39,7 @@ Feature: test a diesel engine using cucumber
     When I reset Bundler environment variable
     And I run `bundle install --local`
 
+  @slow
   Scenario: create a diesel engine and test using cucumber
     When I write to "features/hello.feature" with:
     """
