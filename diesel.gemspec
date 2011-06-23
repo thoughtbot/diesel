@@ -15,10 +15,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.test_files   = Dir['features/**/*']
 
-  s.default_executable = 'diesel'
-  s.executables        = ['diesel']
-
-  s.has_rdoc = false
+  s.executables  = ['diesel']
 
   s.authors = ["thoughtbot, inc.", "Joe Ferris"]
   s.email   = %q{support@thoughtbot.com}
