@@ -2,8 +2,11 @@
 
 source "http://rubygems.org"
 
-gem "rails", "3.0.7"
-gem "rake", "~> 0.8.7"
+gem "rails", "3.1.0.rc4"
 gem "database_cleaner", :require=>false
+gem "sass"
+gem "coffee-script"
+gem "uglifier"
+gem "jquery-rails"
 
 gemspec :path=>"../"
