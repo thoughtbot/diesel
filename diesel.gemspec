@@ -1,33 +1,31 @@
+# -*- encoding: utf-8 -*-
+#
+$LOAD_PATH << File.join(File.dirname(__FILE__), 'lib')
+require 'diesel/version'
+
 Gem::Specification.new do |s|
   s.name        = %q{diesel}
-  s.version     = '0.1.5'
+  s.version     = Diesel::VERSION.dup
+  s.authors     = ["thoughtbot, inc.", "Joe Ferris"]
+  s.email       = "support@thoughtbot.com"
+  s.homepage    = "http://github.com/thoughtbot/diesel"
   s.summary     = %q{Diesel makes your engine go.}
   s.description = %q{Develop your Rails engines like you develop your Rails applications.}
 
-  s.files        = Dir['[A-Z]*',
-                       'config/**/*',
-                       'app/**/*',
-                       'lib/**/*.*',
-                       'features/**/*',
-                       'lib/generators/**/*',
-                       'bin/**/*',
-                       'spec/**/*.rb']
-  s.require_path = 'lib'
-  s.test_files   = Dir['features/**/*']
-
-  s.executables  = ['diesel']
-
-  s.authors = ["thoughtbot, inc.", "Joe Ferris"]
-  s.email   = %q{support@thoughtbot.com}
-  s.homepage = "http://github.com/thoughtbot/diesel"
+  s.files         = `git ls-files`.split("\n")
+  s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
+  s.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  s.require_path  = ["lib"]
 
   s.add_dependency('railties')
 
   s.add_development_dependency('cucumber-rails', '~> 0.5.1')
-  s.add_development_dependency('appraisal')
+  s.add_development_dependency('aruba')
+  s.add_development_dependency('appraisal', '~> 0.3')
   s.add_development_dependency('rspec-rails', '~> 2.6.1')
   s.add_development_dependency('thin')
   s.add_development_dependency('sqlite3-ruby')
+  s.add_development_dependency('database_cleaner')
 
   s.platform = Gem::Platform::RUBY
   s.rubygems_version = %q{1.2.0}

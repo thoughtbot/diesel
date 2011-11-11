@@ -3,6 +3,5 @@
 source "http://rubygems.org"
 
 gem "rails", "3.0.9"
-gem "database_cleaner", :require=>false
 
 gemspec :path=>"../"
