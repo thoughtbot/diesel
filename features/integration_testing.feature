@@ -106,7 +106,7 @@ Feature: integration testing
     @puts @announce
     Feature: integrate with application
       Scenario: generate a Rails app, run the generates, and run the tests
-        When I successfully run `bundle exec rails new testapp`
+        When I successfully run `bundle exec rails new testapp --skip-test-unit`
         And I cd to "testapp"
         And I add the "cucumber-rails" gem
         And I add the "capybara" gem
@@ -120,7 +120,7 @@ Feature: integration testing
         And I successfully run `bundle exec rails generate testengine:install`
         And I successfully run `bundle exec rails generate testengine:features`
         And I successfully run `bundle exec rake db:migrate --trace`
-        And I successfully run `bundle exec rake --trace`
+        And I successfully run `bundle exec rake cucumber --trace`
         Then the output should contain "1 scenario (1 passed)"
         And the output should not contain "Could not find generator"
     """
