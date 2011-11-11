@@ -3,11 +3,11 @@ When /^I add this library as a dependency$/ do
 end
 
 Then /^at least one example should have run$/ do
-  Then %{the output should match /[1-9]0? examples?/}
+  steps %{Then the output should match /[1-9]0? examples?/}
 end
 
 When /^I add the "([^"]*)" as a diesel engine$/ do |engine_name|
-  When %{I add this library as a dependency}
+  steps %{When I add this library as a dependency}
   append_to_file('Gemfile', <<-GEM)
 
     gem "#{engine_name}", :path => "#{PROJECT_ROOT}/tmp/aruba/#{engine_name}"
