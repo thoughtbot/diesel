@@ -60,7 +60,7 @@ Feature: reusable features generator
     When I write to "features/step_definitions/engine/example_steps.rb" with:
     """
     Then %{I should receive a warm greeting} do
-      Then %{I should see "Hello there"}
+      page.should have_content("Hello there")
     end
     """
     When I cd to ".."
@@ -68,11 +68,12 @@ Feature: reusable features generator
     And I cd to "testapp"
     And I append to "Gemfile" with:
     """
-    gem "cucumber-rails", ">= 0.5.1"
-    gem "capybara", ">= 1.0.0.beta1"
+    gem "capybara", "~> 1.0.0"
     gem "rspec"
-    gem "database_cleaner", :group => :test
-
+    group :test do
+      gem "database_cleaner"
+      gem "cucumber-rails", "~> 0.5.2"
+    end
     """
     When I add the "testengine" as a diesel engine
     And I reset Bundler environment variable

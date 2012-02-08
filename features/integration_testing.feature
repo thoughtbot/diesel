@@ -76,7 +76,11 @@ Feature: integration testing
     When I write to "features/step_definitions/engine/example_steps.rb" with:
     """
     Then %{I should receive a warm greeting} do
-      Then %{I should see "Hello there"}
+      page.should have_content "Hello there"
+    end
+
+    When "I go to the examples page" do
+      visit examples_path
     end
     """
     When I write to "lib/generators/testengine/install/install_generator.rb" with:

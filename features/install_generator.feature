@@ -99,6 +99,16 @@ Feature: reusable install generator
         When I go to the examples page
         Then I should see "Hello there"
     """
+    When I write to "features/step_definitions/engine/example_steps.rb" with:
+    """
+    Then %{I should see "Hello there"} do
+      page.should have_content("Hello there")
+    end
+
+    When "I go to the examples page" do
+      visit examples_path
+    end
+    """
     When I run `bundle exec cucumber features/examples.feature`
     Then it should pass with:
     """

@@ -19,13 +19,14 @@ Gem::Specification.new do |s|
 
   s.add_dependency('railties')
 
-  s.add_development_dependency('cucumber-rails', '~> 0.5.1')
+  s.add_development_dependency('cucumber-rails', '~> 0.5.2')
   s.add_development_dependency('aruba')
-  s.add_development_dependency('appraisal', '~> 0.3')
+  s.add_development_dependency('appraisal', '~> 0.4')
   s.add_development_dependency('rspec-rails', '~> 2.6.1')
   s.add_development_dependency('thin')
   s.add_development_dependency('sqlite3-ruby')
   s.add_development_dependency('database_cleaner')
+  s.add_development_dependency('turn')
 
   s.platform = Gem::Platform::RUBY
   s.rubygems_version = %q{1.2.0}
