@@ -1,4 +1,4 @@
-Diesel
+Diesel [![Build Status](https://secure.travis-ci.org/thoughtbot/diesel.png)](http://travis-ci.org/thoughtbot/diesel)
 ======
 
 Diesel gives your Rails engines power.
