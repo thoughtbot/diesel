@@ -8,7 +8,7 @@ Feature: test a diesel engine using cucumber
     gem "cucumber-rails"
     gem "rails"
     gem "rspec"
-    gem "sqlite3-ruby"
+    gem "sqlite3"
     gem "formtastic", "~> 1.2.3"
     """
     When I add this library as a dependency

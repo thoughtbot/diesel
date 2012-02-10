@@ -7,7 +7,7 @@ Feature: test a diesel engine using the bootstrapped application
     """
     gem "rspec-rails", "~> 2.6.0"
     gem "rails"
-    gem "sqlite3-ruby"
+    gem "sqlite3"
     """
     When I add this library as a dependency
     And I write to "spec/spec_helper.rb" with:

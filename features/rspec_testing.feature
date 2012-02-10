@@ -7,7 +7,7 @@ Feature: test a diesel engine using rspec
     """
     gem "rspec-rails"
     gem "rails"
-    gem "sqlite3-ruby"
+    gem "sqlite3"
     """
     When I add this library as a dependency
     And I write to "spec/controllers/example_controller_spec.rb" with:

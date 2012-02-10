@@ -7,7 +7,7 @@ Feature: use Rails rake tasks when developing a diesel application
     """
     gem "rspec-rails", "~> 2.3.0"
     gem "rails", "~> 3.0.3"
-    gem "sqlite3-ruby"
+    gem "sqlite3"
     """
     When I add this library as a dependency
     And I run `bundle install --local`
