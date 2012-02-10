@@ -22,6 +22,7 @@ Feature: use Rails rake tasks when developing a diesel application
     """
     ENV["RAILS_ENV"] ||= 'test'
     require "diesel/testing"
+    require 'test/unit'
     require 'rspec/rails'
 
     describe Post do

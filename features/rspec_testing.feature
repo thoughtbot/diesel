@@ -14,6 +14,7 @@ Feature: test a diesel engine using rspec
     """
     ENV["RAILS_ENV"] ||= 'test'
     require "diesel/testing"
+    require 'test/unit'
     require 'rspec/rails'
 
     describe ExampleController do

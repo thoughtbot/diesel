@@ -59,6 +59,10 @@ Feature: reusable features generator
     """
     When I write to "features/step_definitions/engine/example_steps.rb" with:
     """
+    When /^I go to the examples page$/ do
+      visit '/examples'
+    end
+
     Then %{I should receive a warm greeting} do
       page.should have_content("Hello there")
     end
@@ -68,11 +72,11 @@ Feature: reusable features generator
     And I cd to "testapp"
     And I append to "Gemfile" with:
     """
-    gem "capybara", "~> 1.0.0"
+    gem "capybara"
     gem "rspec"
     group :test do
       gem "database_cleaner"
-      gem "cucumber-rails", "~> 0.5.2"
+      gem "cucumber-rails", "~> 1.2.1"
     end
     """
     When I add the "testengine" as a diesel engine

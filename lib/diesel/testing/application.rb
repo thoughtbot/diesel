@@ -13,6 +13,7 @@ module Diesel
         config.paths['app/controllers'] << "#{APP_ROOT}/app/controllers"
         config.paths['app/views'] << "#{APP_ROOT}/app/views"
         config.paths['log'] = "tmp/log/development.log"
+        config.assets.enabled = true
       else
         config.paths.config.database = "#{APP_ROOT}/config/database.yml"
         config.paths.config.routes << "#{APP_ROOT}/config/routes.rb"
