@@ -34,7 +34,6 @@ GEM
     activesupport (3.2.1)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    ansi (1.4.2)
     appraisal (0.4.0)
       bundler
       rake
@@ -168,8 +167,6 @@ GEM
     treetop (1.4.10)
       polyglot
       polyglot (>= 0.3.1)
-    turn (0.9.2)
-      ansi
     tzinfo (0.3.31)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
@@ -194,5 +191,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   thin
-  turn
   uglifier (>= 1.0.3)

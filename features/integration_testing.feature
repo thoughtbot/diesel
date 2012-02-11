@@ -110,8 +110,9 @@ Feature: integration testing
     @puts @announce
     Feature: integrate with application
       Scenario: generate a Rails app, run the generates, and run the tests
-        When I successfully run `bundle exec rails new testapp --skip-test-unit`
+        When I successfully run `bundle exec rails new testapp --skip-test-unit --skip-bundle`
         And I cd to "testapp"
+        And I comment out gem "turn" from my Gemfile
         And I add the "cucumber-rails" gem
         And I add the "capybara" gem
         And I add the "rspec-rails" gem
@@ -145,6 +146,13 @@ Feature: integration testing
     When /^I reset the Bundler environment variable$/ do
       %w(RUBYOPT BUNDLE_PATH BUNDLE_BIN_PATH BUNDLE_GEMFILE).each do |key|
         ENV[key] = nil
+      end
+    end
+
+    When /^I comment out gem "([^"]*)" from my Gemfile$/ do |gem_name|
+      content = File.read('Gemfile')
+      File.open('Gemfile', 'w') do |f|
+        f.write content.sub(/gem ['"]#{gem_name}/, '#\1')
       end
     end
     """

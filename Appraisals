@@ -8,7 +8,6 @@ appraise '3.1' do
   gem 'coffee-rails', '~> 3.1.1'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'turn', '0.8.2'
 end
 
 appraise '3.2' do

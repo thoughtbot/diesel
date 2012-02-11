@@ -74,8 +74,9 @@ Feature: reusable install generator
     <% end -%>
     """
     When I cd to ".."
-    And I successfully run `bundle exec rails new testapp`
+    And I successfully run `bundle exec rails new testapp --skip-bundle`
     And I cd to "testapp"
+    And I comment out gem "turn" from my Gemfile
     And I append to "Gemfile" with:
     """
     gem "cucumber-rails"

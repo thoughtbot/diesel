@@ -37,8 +37,9 @@ Feature: reusable views generator
     end
     """
     When I cd to ".."
-    And I successfully run `bundle exec rails new testapp`
+    And I successfully run `bundle exec rails new testapp --skip-bundle`
     And I cd to "testapp"
+    And I comment out gem "turn" from my Gemfile
     And I add the "testengine" as a diesel engine
     And I reset Bundler environment variable
     And I run `bundle install --local`
