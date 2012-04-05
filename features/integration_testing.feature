@@ -34,6 +34,7 @@ Feature: integration testing
     When I write to "app/models/example.rb" with:
     """
     class Example < ActiveRecord::Base
+      attr_accessible :title
     end
     """
     When I write to "app/controllers/examples_controller.rb" with:
