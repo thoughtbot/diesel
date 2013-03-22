@@ -1,7 +1,18 @@
-Diesel [![Build Status](https://secure.travis-ci.org/thoughtbot/diesel.png)](http://travis-ci.org/thoughtbot/diesel)
+Diesel
 ======
 
 Diesel gives your Rails engines power.
+
+Deprecated
+==========
+
+Rails engines have greatly improved since the 3.0 days, and we no longer feel
+that enhancements from diesel are necessary.
+
+Diesel is deprecated and no longer being developed.
+
+Usage
+-----
 
 It makes it easier to have your Engine provide generators like:
 
